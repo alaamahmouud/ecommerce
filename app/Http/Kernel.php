@@ -70,8 +70,11 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         // some other middlewares
-        'admin' => \App\Http\Middleware\AdminAuthenticated::class,
-        'user'  => \App\Http\Middleware\UserAuthenticated::class
+        // 'admin' => \App\Http\Middleware\AdminAuthenticated::class,
+        // 'user'  => \App\Http\Middleware\UserAuthenticated::class,
+        //
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
     ];
 
     

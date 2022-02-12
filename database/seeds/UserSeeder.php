@@ -12,12 +12,17 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(30),
-            'email' => Str::random(30).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
+        factory(App\User::class, 30)->create()->each(function ($user) {
+            DB::table('users')->insert([
+                'name' => Str::random(30),
+                'email' => Str::random(30).'@gmail.com',
+                'password' => Hash::make('password'),
+            ]);
+            
+        });
     }
+
 }
