@@ -10,5 +10,9 @@ class Product extends Model
         public $timestamps = true;
         protected $fillable = array('name', 'parent_id');
     
+        public function categories()
+        {
+            return $this->belongsToMany(Category::class);
+        }
 }
     
