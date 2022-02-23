@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
 Route::resource('roles','RoleController');
 Route::resource('users','UserController');
+Route::resource('categories','CategoryController');
+
 });
+
+
 
